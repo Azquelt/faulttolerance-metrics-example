@@ -1,0 +1,28 @@
+buildscript {
+    repositories {
+        mavenCentral()
+        maven {
+            name = 'Sonatype Nexus Snapshots'
+            url = 'https://oss.sonatype.org/content/repositories/snapshots/'
+        }
+    }
+    dependencies {
+        classpath 'net.wasdev.wlp.gradle.plugins:liberty-gradle-plugin:2.1.1-SNAPSHOT'
+    }
+}
+
+apply plugin: 'war'
+apply plugin: 'liberty'
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    providedCompile 'javax.ws.rs:javax.ws.rs-api:2.0.1'
+    providedCompile 'org.eclipse.microprofile.config:microprofile-config-api:1.2'
+    providedCompile 'javax.enterprise:cdi-api:1.2'
+    providedCompile 'org.eclipse.microprofile.fault-tolerance:microprofile-fault-tolerance-api:1.1.2'
+    libertyRuntime 'io.openliberty:openliberty-runtime:18.0.0.3'
+}

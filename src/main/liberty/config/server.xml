@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<server description="new server">
+
+    <!-- Enable features -->
+    <featureManager>
+        <feature>cdi-1.2</feature>
+        <feature>jaxrs-2.0</feature>
+        <feature>mpFaultTolerance-1.1</feature>
+        <feature>mpMetrics-1.1</feature>
+    </featureManager>
+
+    <!-- To access this server from a remote client add a host attribute to the following element, e.g. host="*" -->
+    <httpEndpoint id="defaultHttpEndpoint"
+                  httpPort="9080"
+                  httpsPort="9443" />
+                  
+    <quickStartSecurity userName="admin" userPassword="adm1n"/>
+    
+    <webApplication location="faulttolerance-metrics-example.war" contextRoot="/"/>
+    
+    <variable name="breaking.service.broken" value="false"/>
+    <variable name="constrained.service.delay" value="3000"/>
+    
+</server>
